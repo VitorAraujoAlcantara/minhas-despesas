@@ -44,7 +44,6 @@ public class DespesaCrudInterceptorService: AbstractCrudInterceptorService<Despe
         periodo.ValorFalta += Math.Round( entity.ValorFalta,2);
         await _periodoCrudRepository.UpdateAsync(periodo);
         return entity;
-
     }
 
     public override async Task<Guid> BeforeDeleteAsync(Guid id)

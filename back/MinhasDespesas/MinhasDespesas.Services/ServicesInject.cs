@@ -48,6 +48,8 @@ public static class ServicesInject
         service.AddTransient<IGrupoDespesaService, GrupoDespesaService>();
         service.AddTransient<IPeriodoService, PeriodoService>();
 
+        service.AddTransient<IClonarPeriodoService, ClonarPeriodoService>();
+        
         service.PtcSimpleCrudService();
 
         service.AddRepositories(configuration);

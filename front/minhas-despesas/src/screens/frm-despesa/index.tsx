@@ -329,6 +329,10 @@ const FrmDespesa = () => {
                 <ClonePeriodo
                     entity={entity}
                     onCancel={() => setShowClonePeriodo(false)}
+                    onClone={() => {
+                        setFilter({...filter})
+                        setShowClonePeriodo(false)
+                    }}
                 />
 
             </ModalPanelDefault>

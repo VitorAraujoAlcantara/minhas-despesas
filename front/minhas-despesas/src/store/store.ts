@@ -4,6 +4,7 @@ import { despesaCrudSlice } from './reducers/despesa';
 import { despesaPagamentoCrudSlice } from './reducers/despesa-pagamento';
 import { grupoDespesaCrudSlice } from './reducers/grupo-despesa';
 import { periodoCrudSlice } from './reducers/periodo';
+import periodoUtil from './reducers/periodo-util';
 
 
 const store = configureStore({
@@ -13,6 +14,7 @@ const store = configureStore({
     periodo: periodoCrudSlice.slice.reducer,
     despesa: despesaCrudSlice.slice.reducer,
     despesaPagamento: despesaPagamentoCrudSlice.slice.reducer,
+    periodoUtil: periodoUtil.reducer
   }
 })
 
