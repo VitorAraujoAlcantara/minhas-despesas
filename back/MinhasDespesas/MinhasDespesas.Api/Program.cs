@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using MinhasDespesas.Services;
+using PtcSimpleToken;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddServices(builder.Configuration);
+builder.Services.AddSimpleToken<TokenUserService>(builder.Configuration.GetValue<string>("TokenKey"));
 
 var app = builder.Build();
 

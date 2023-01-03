@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="PtcSimpleCrud" Version="1.0.4-alpha" />
+    <PackageReference Include="PtcSimpleToken" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,6 +18,9 @@
     <Reference Include="PtcSimpleCrud.Models">
       <HintPath>..\..\..\..\.nuget\packages\ptcsimplecrud.models\1.0.2-alpha\lib\net6.0\PtcSimpleCrud.Models.dll</HintPath>
     </Reference>
+    <Reference Include="PtcSimpleToken">
+      <HintPath>..\..\..\..\.nuget\packages\ptcsimpletoken\1.0.0\lib\net6.0\PtcSimpleToken.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

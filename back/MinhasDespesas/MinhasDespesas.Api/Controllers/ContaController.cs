@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MinhasDespesas.Models.Entities;
 using MinhasDespesas.Services.Interfaces;
+using PtcSimpleToken.Services.Interfaces;
 
 namespace MinhasDespesas.Api.Controllers;
 
@@ -22,8 +23,9 @@ public class ContaController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<Conta?> AddConta(Conta conta)
+    public async Task<Conta?> AddConta([FromServices] IEncriptStringService encriptStringService, Conta conta)
     {
+        conta.Password = encriptStringService.GetPasswordEncripted(conta.Password);
         return await _contaService.CadastraContaAsync(conta);
     } 
     
