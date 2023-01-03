@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface AppState {
     version: string ;
@@ -9,15 +9,21 @@ interface AppState {
 const initialState : AppState ={
     name: 'Minhas despesas',
     version: '1.0.0-alpha',
-    contaId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+    contaId: ''
 }
 
 export const appSlice = createSlice({
     name: 'app-slice',
     initialState,
     reducers:{
-
+        setContaId: (state, action: PayloadAction<string>) => {
+            state.contaId = action.payload
+        },
+        clearContaId: state => {
+            state.contaId = ''
+        }
     },
 });
 
+export const { setContaId, clearContaId } = appSlice.actions;
 export default appSlice

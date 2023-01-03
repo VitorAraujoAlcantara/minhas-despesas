@@ -15,7 +15,7 @@ public class PeriodoCrudInterceptorService: AbstractCrudInterceptorService<Perio
     }
     public override async Task<Periodo?> BeforeCreateAsync(Periodo? entity)
     {
-        if (await _crudRepository.FirstOrDefaultAsync(x => x.Ano == entity.Ano && x.Mes == entity.Mes) !=
+        if (await _crudRepository.FirstOrDefaultAsync(x => x.Ano == entity.Ano && x.Mes == entity.Mes && x.ContaId == entity.ContaId ) !=
             default(Periodo))
         {
             throw new CrudInterceptorValidateException($"Já existe um período aberto para {entity.Ano}/{entity.Mes}!");

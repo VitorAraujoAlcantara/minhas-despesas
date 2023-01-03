@@ -84,8 +84,11 @@ const ActionDiv = styled.div`
 const FrmDespesa = () => {
     const dispach = useAppDispatch();
     const { data, entity, deleted } = useAppSelector(state => state.periodo)
+    const { contaId } = useAppSelector(state => state.app)
     const [filter, setFilter] = useState<PaginatedFilterDataQuery<PeriodoFilterDto>>({
-        filter: {},
+        filter: {
+            contaId
+        },
         itensPerPage: 10,
         order: 'Ano_desc;Mes_desc',
         page: 1

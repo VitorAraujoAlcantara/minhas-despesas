@@ -54,6 +54,7 @@ const tableItemConfigs: Array<TableItemConfig<GrupoDespesaDto>> = [
 const FrmGrupoDespesa = () => {
     const dispach = useAppDispatch();
     const { data, deleted } = useAppSelector(state => state.grupoDespesa)
+    const { contaId } = useAppSelector(state => state.app)
     const [idToEdit, setIdToEdit] = useState<string>('')
 
     const crudSlice = grupoDespesaCrudSlice;
@@ -65,7 +66,7 @@ const FrmGrupoDespesa = () => {
                 order: 'Nome',
                 page: 1,
                 filter: {
-
+                    contaId
                 }
             })
         )

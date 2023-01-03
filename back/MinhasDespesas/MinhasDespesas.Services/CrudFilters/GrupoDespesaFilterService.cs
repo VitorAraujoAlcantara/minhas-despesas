@@ -8,10 +8,7 @@ public class GrupoDespesaFilterService: ICrudFilterService<GrupoDespesa, GrupoDe
 {
     public IQueryable<GrupoDespesa> Filter(IQueryable<GrupoDespesa> data, GrupoDespesaFilter filter)
     {
-        if (filter.ContaId != Guid.Empty)
-        {
-            data = data.Where(x => x.ContaId == filter.ContaId);
-        }
-        return data;
+       data = data.Where(x => x.ContaId == filter.ContaId);
+       return data;
     }
 }

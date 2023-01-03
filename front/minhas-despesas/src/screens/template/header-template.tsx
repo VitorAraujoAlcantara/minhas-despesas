@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import UserIcon from "../../components/user-icon";
 import { useAppSelector } from "../../store/hooks";
 
 const DivRoot = styled.div`
@@ -11,9 +12,15 @@ const DivRoot = styled.div`
 
 const HeaderTemplate = () => {
     const appData = useAppSelector( state => state.app)
+    const {  currentUser } = useAppSelector(state => state.userLogin)
     return(
         <DivRoot>
             {appData.name} - {appData.version}
+            {currentUser && 
+                <UserIcon
+                    userName={currentUser.user?.name??''}
+                />
+            }
         </DivRoot>
     )
 }

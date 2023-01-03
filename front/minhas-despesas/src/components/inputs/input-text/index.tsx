@@ -39,7 +39,7 @@ interface InputTextProps{
     value?: string;
     required?: boolean;
     autoFocus?: boolean;
-    inputType: 'text' | 'number';
+    inputType: 'text' | 'number' | 'email' | 'password';
 }
 
 function InputText(props: InputTextProps){

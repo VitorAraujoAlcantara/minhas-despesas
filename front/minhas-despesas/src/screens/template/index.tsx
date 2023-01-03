@@ -1,5 +1,10 @@
+import { useEffect, useState } from "react"
+import { Navigate, useLocation } from "react-router-dom"
 import { Outlet } from "react-router-dom"
 import styled from "styled-components"
+import { useAppDispatch, useAppSelector } from "../../store/hooks"
+import { setContaId } from "../../store/reducers/app"
+import { getLoginFromStorage } from "../../store/reducers/user-login"
 import HeaderTemplate from "./header-template"
 import LeftMenu from "./left-menu"
 
@@ -26,6 +31,31 @@ const DivBody = styled.div`
 `
 
 const Template = () => {
+    const dispach = useAppDispatch();    
+    const location = useLocation();
+    const { currentUser } = useAppSelector(state => state.userLogin)
+    const [appStarted, setAppStarted] = useState<boolean>(false);
+    useEffect(() => {
+        console.log('APLICAÇÃO INICIADA!');
+        dispach(getLoginFromStorage())
+        setAppStarted(true);
+    },[])
+
+    useEffect(() => {
+        if ( ! currentUser){
+            return;
+        }
+        if ( ! currentUser.user || ! currentUser.user.userId ){
+            return;
+        }
+        dispach( setContaId(currentUser.user.userId))
+    },[currentUser])
+
+    if (  location.pathname !== '/login' && appStarted && ! currentUser ){
+        return <Navigate to='/login' />
+    }
+
+
     return (
         <DivRoot>
             <HeaderTemplate />

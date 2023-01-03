@@ -5,6 +5,7 @@ import FrmDespesaPeriodoAdd from "./screens/frm-despesa-periodo-add"
 import FrmGrupoDespesa from "./screens/frm-grupo-despesa"
 import FrmGrupoDespesaAdd from "./screens/frm-grupo-despesa-add"
 import FrmGrupoDespesaEdit from "./screens/frm-grupo-despesa-edit"
+import FrmLogin from "./screens/frm-login"
 import Home from "./screens/home"
 import Template from "./screens/template"
 
@@ -13,6 +14,8 @@ const AppRoutes = () => {
         <Routes>
             <Route element={<Template />}>
                 <Route path="/" element={<Home />} />
+                <Route path="/login" element={<FrmLogin />} />
+
                 {/* Grupos */}
                 <Route path="/group" element={<FrmGrupoDespesa />} />
                 <Route path="/group/add" element={<FrmGrupoDespesaAdd />} />

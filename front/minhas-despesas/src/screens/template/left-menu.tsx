@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import BtnIcon from "../../components/buttons/btn-icon";
+import { useAppSelector } from "../../store/hooks";
 
 
 const DivRoot = styled.div`
@@ -10,25 +11,34 @@ const DivRoot = styled.div`
     border-right: 1px solid #cccccc1f;
 `
 const LeftMenu = () => {
+    const { currentUser } = useAppSelector(state => state.userLogin)
     return (
         <DivRoot>
-            <BtnIcon 
+            <BtnIcon
                 icon="home"
                 caption="Home"
                 to="/"
             />
 
-            <BtnIcon 
+            <BtnIcon
                 icon="folderPlus"
                 caption="+ Grupo"
                 to="/group"
             />
 
-            <BtnIcon 
+            <BtnIcon
                 icon="coins"
                 caption="Despesas"
                 to="/expense"
             />
+
+            {currentUser &&
+                <BtnIcon
+                    icon="signOut"
+                    caption="Logout"
+                    to="/login"
+                />
+            }
         </DivRoot>
     )
 }
