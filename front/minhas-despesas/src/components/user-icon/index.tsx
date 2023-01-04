@@ -27,14 +27,24 @@ const Circle = styled.div`
 
 interface UserIconProps {
     userName: string;
-
+    onClick?: () => void;
 }
 
 const UserIcon = (props: UserIconProps) => {
     const firstLetter = props.userName.length ? props.userName.charAt(0) : '';
     return (
         <DivRoot>
-            <Circle>
+            <Circle
+                onClick={
+                    e => {
+                        if (!props.onClick) {
+                            return;
+                        }
+
+                        props.onClick();
+                    }
+                }
+            >
                 {firstLetter}
             </Circle>
         </DivRoot>

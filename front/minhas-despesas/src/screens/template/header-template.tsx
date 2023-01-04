@@ -1,5 +1,8 @@
+import { useState } from "react";
 import styled from "styled-components";
+import Popup from "../../components/popup";
 import UserIcon from "../../components/user-icon";
+import DivContaDetail from "../../specific-components/conta/div-conta-detail";
 import { useAppSelector } from "../../store/hooks";
 
 const DivRoot = styled.div`
@@ -18,18 +21,37 @@ const DivTitle = styled.div`
     font-size: 1rem;
 `
 
+const DivUser = styled.div`
+    display: flex;
+    position    : relative ;
+    flex: 1;
+`
+
 const HeaderTemplate = () => {
     const appData = useAppSelector(state => state.app)
     const { currentUser } = useAppSelector(state => state.userLogin)
+    const [showUserPopup, setShowUserPopup] = useState<boolean>(false);
     return (
         <DivRoot>
             <DivTitle>
                 {appData.name} - {appData.version}
             </DivTitle>
-            {currentUser &&
-                <UserIcon
-                    userName={currentUser.user?.name ?? ''}
-                />
+            {currentUser && currentUser.user &&
+                <DivUser>
+                    <UserIcon
+                        userName={currentUser.user?.name ?? ''}
+                        onClick={() => setShowUserPopup(!showUserPopup)}
+                    />
+
+                    <Popup
+                        show={showUserPopup}
+                        anchor="bottom-right"
+                    >
+                        <DivContaDetail
+
+                        />
+                    </Popup>
+                </DivUser>
             }
         </DivRoot>
     )
