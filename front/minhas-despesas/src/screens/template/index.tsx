@@ -9,9 +9,9 @@ import HeaderTemplate from "./header-template"
 import LeftMenu from "./left-menu"
 
 const DivRoot = styled.div`
-    display: flex;
-    background-color: #011627;    
-    color: #fff;
+    display: flex;    
+    background-color: ${props => props.theme.palette.primary.main};    
+    color: ${props => props.theme.palette.primary.contrastText};
     flex: 1;    
     flex-direction: column;
     overflow: auto;

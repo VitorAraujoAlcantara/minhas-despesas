@@ -32,15 +32,15 @@ const Btn = styled(Link)`
     align-items: center;
     margin: 10px 0px;
     padding: 10px;   
-    text-decoration: none;
-    color: #fff;
+    text-decoration: none;    
+    color: inherit;
     font-size: 2rem;
-    transition: 3s;
+    transition: 1s;
     border-radius: 10px;
     &:hover{
-        background-color: #ccc;
+        background-color: ${props => props.theme.palette.common.white};
         opacity: 0.7;
-        color: #000;
+        color: ${props => props.theme.palette.common.black};
     }
 `
 

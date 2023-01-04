@@ -43,6 +43,13 @@ const Fieldset = styled.fieldset`
     border: none;
 `
 
+const ErroText = styled(DivRow)`
+    background-color: ${props => props.theme.palette.danger.main};
+    color:  ${props => props.theme.palette.danger.contrastText};
+    padding: 10px;
+    margin: 10px;
+`
+
 const FrmLogin = () => {
 
     const dispatch = useAppDispatch();
@@ -132,9 +139,9 @@ const FrmLogin = () => {
                             </DivRow>
                         </FrmBody>
                         {erro &&
-                            <DivRow>
+                            <ErroText>
                                 {erro}
-                            </DivRow>
+                            </ErroText>
 
                         }
                         <DivRow>

@@ -8,11 +8,11 @@ const DivRoot = styled.div`
 `
 
 const Circle = styled.div`    
-    background-color: #fff;
+    background-color: ${props => props.theme.palette.primary.main};
     border-radius: 50%;
     padding: 5px;
     font-size: 1rem;
-    color: #011627;
+    color: ${props => props.theme.palette.primary.contrastText};
     display: flex;
     justify-content: center;
     align-items: center;

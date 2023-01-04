@@ -5,8 +5,8 @@ import ModalBack from "../modal-back";
 const DivRoot = styled.div`
     max-width: calc( 100vw * 0.75 );
     max-height: calc( 100vh * 0.75 );
-    background-color: #011627;
-    box-shadow: 2px 2px 10px #011627;
+    background-color: ${ props => props.theme.palette.primary.main};
+    box-shadow: 2px 2px 10px ${ props => props.theme.palette.primary.main};
 `
 
 interface ModalPanelDefaultProps{

@@ -29,9 +29,10 @@ const Tab = styled(Button)`
 `
 
 const TabActive = styled(Tab)`
-    background-color:#ccc;
+    /* background-color:#ccc; */
+    background-color: ${props => props.theme.palette.secondary.main};
     opacity: 0.7;
-    color: #000;
+    color: ${props => props.theme.palette.secondary.contrastText};
     cursor: not-allowed;
 `
 

@@ -34,6 +34,13 @@ const DivFooter = styled.div`
     gap: 10px;
 `
 
+const ErroText = styled.div`
+    background-color: ${props => props.theme.palette.danger.main};
+    color:  ${props => props.theme.palette.danger.contrastText};
+    padding: 10px;
+    margin: 10px;
+`
+
 interface CrudAddProps<CrudType> {
     title: string;
     formConfigs: Array<FormAddItemConfig<CrudType> | FormAddItemHidedConfig<CrudType> | FormAddItemErroConfig | FormAddComboboxConfig>;
@@ -49,11 +56,11 @@ function CrudAdd<CrudType>(props: CrudAddProps<CrudType>) {
 
         if ("erroMessage" in config) {
             return (
-                <LabelBold
+                <ErroText
                     key={key}
                 >
                     {config.erroMessage}
-                </LabelBold>
+                </ErroText>
             )
         }
 

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { BoxBottom } from "../../../components/box";
 import BtnSubmit from "../../../components/buttons/btn-submit";
-import FormHeader from "../../../components/forms/form-header";
+import FormHeader, { FormHeaderDanger } from "../../../components/forms/form-header";
 import { DespesaDto } from "../../../models/despesa-dto";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { despesaCrudSlice } from "../../../store/reducers/despesa";
@@ -79,9 +79,9 @@ const DivDelete = (props: DivDeleteProps) => {
             </DivColumn>
             <DivColumn>
                 <BoxHeader>
-                    <FormHeader>
+                    <FormHeaderDanger>
                         EXCLUSÃO
-                    </FormHeader>
+                    </FormHeaderDanger>
                 </BoxHeader>
                 <Form>
                     <FormBody>

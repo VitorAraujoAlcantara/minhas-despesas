@@ -8,11 +8,11 @@ const Button = styled.button`
     padding: 10px;
     font-size: 1rem;
     cursor: pointer;
-    transition: 1s;
+    transition: 0.5s;
     &:hover{
-        background-color: #ccc;
+        background-color: ${props => props.theme.palette.common.white};
         opacity: 0.7;
-        color: #000;
+        color: ${props => props.theme.palette.common.black};
     }
 `
 

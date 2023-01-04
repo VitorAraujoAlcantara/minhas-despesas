@@ -9,6 +9,8 @@ const DivRoot = styled.div`
     flex-direction: column;    
     box-shadow:  0px 0px 10px #cccccc07;
     border-right: 1px solid #cccccc1f;
+    background-color: ${props => props.theme.palette.secondary.main};
+    color: ${props => props.theme.palette.secondary.contrastText};
 `
 const LeftMenu = () => {
     const { currentUser } = useAppSelector(state => state.userLogin)

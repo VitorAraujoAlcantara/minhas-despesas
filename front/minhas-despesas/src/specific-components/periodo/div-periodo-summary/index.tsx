@@ -8,6 +8,8 @@ const DivRoot = styled(BoxBottom)`
     padding: 10px;
     gap: 10px;
     flex-wrap: wrap;
+    background-color: ${props => props.theme.palette.secondary.main};
+    color: ${props => props.theme.palette.secondary.contrastText};
 
 `
 const DivSummaryItem = styled.div`

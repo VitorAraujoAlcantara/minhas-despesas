@@ -7,7 +7,7 @@ const DivRoot = styled.div`
     display: flex;
     flex: 1;
     align-items : baseline ;
-    padding: 0px 10px 10px 10px;
+    /* padding: 0px 10px 10px 10px; */
     overflow: auto;
 `
 
@@ -26,7 +26,9 @@ const Tbody = styled.tbody`
     tr{
         transition: 1s;
         &:hover{
-            background-color: #cccccc0b;
+            /* background-color:  #cccccc0b; */
+            background-color: ${props => props.theme.palette.secondary.main};
+            color: ${props => props.theme.palette.secondary.contrastText};
         }
     }
 `
@@ -38,8 +40,9 @@ const Th = styled.th`
     padding: 10px;
     font-weight: bold;
     position: sticky;
-    top: 0;
-    background-color: #011627;
+    top: 0;    
+    background-color: ${props => props.theme.palette.secondary.main};
+    color: ${props => props.theme.palette.secondary.contrastText};
 `
 
 const Td = styled.td`

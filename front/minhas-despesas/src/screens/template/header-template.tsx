@@ -8,6 +8,8 @@ const DivRoot = styled.div`
     display: flex;
     padding: 10px;
     font-size: 2rem;
+    background-color: ${props => props.theme.palette.secondary.main};
+    color: ${props => props.theme.palette.secondary.contrastText};
 `
 
 const HeaderTemplate = () => {
