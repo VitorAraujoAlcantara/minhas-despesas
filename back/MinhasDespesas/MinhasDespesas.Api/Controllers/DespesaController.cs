@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MinhasDespesas.Models.Dtos;
 using MinhasDespesas.Models.Entities;
@@ -7,6 +8,7 @@ using PtcSimpleCrud.Service.Interfaces;
 
 namespace MinhasDespesas.Api.Controllers;
 
+[Authorize]
 [Route("api/v1/[controller]")]
 [ApiController]
 public class DespesaController: AbstractCrudFilterController<Despesa,DespesaDto,DespesaCreateDto,DespesaFilter>

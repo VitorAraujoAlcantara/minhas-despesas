@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MinhasDespesas.Models.Dtos;
 using MinhasDespesas.Models.Entities;
@@ -9,6 +10,7 @@ using PtcSimpleCrud.Service.Interfaces;
 
 namespace MinhasDespesas.Api.Controllers;
 
+[Authorize]
 [ApiController]
 public class PeriodoController: AbstractCrudFilterController<Periodo,PeriodoDto,PeriodoCreateDto,PeriodoFilter>
 {

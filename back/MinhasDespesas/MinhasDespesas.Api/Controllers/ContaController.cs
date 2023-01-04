@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MinhasDespesas.Models.Entities;
 using MinhasDespesas.Services.Interfaces;
@@ -5,6 +6,7 @@ using PtcSimpleToken.Services.Interfaces;
 
 namespace MinhasDespesas.Api.Controllers;
 
+[Authorize]
 [Route("api/v1/[controller]")]
 [ApiController]
 public class ContaController : ControllerBase
