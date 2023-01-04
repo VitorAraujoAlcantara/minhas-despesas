@@ -1,6 +1,12 @@
 import { DefaultTheme } from 'styled-components'
 
 export const defaultTheme: DefaultTheme = {
+    font: {
+        family: {
+            sanSerif: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+            monospace: 'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;'
+        }
+    },
     palette: {
         common: {
             black: '#222831',

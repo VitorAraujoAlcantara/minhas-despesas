@@ -3,7 +3,7 @@ import { BoxBottom } from "../../box";
 
 const FormHeader = styled(BoxBottom)`
     display: flex;
-    font-size: 1.5rem;    
+    font-size: 1rem;    
     padding: 10px;    
     background-color: ${props => props.theme.palette.secondary.main};
     color: ${props => props.theme.palette.secondary.contrastText};

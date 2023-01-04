@@ -5,8 +5,16 @@ interface IPalette {
     contrastText: string
 }
 
+interface IFontFamily{
+    sanSerif: string
+    monospace: string
+}
+
 declare module 'styled-components' {
-    export interface DefaultTheme {        
+    export interface DefaultTheme { 
+        font: {
+            family: IFontFamily
+        }       
         palette: {
             common: {
                 black: string

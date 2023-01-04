@@ -48,7 +48,7 @@ const Th = styled.th`
 const Td = styled.td`
     text-align: left;
     padding: 10px 10px;
-    font-weight: lighter;
+    font-size: 0.8rem;
     
 `
 
@@ -68,31 +68,31 @@ function TableDefault<CrudType>(props: TableDefaultProps<CrudType>) {
     const [itens, setItens] = useState<Array<CrudType>>([]);
 
     useEffect(() => {
-        if ( ! props.data ){
+        if (!props.data) {
             return;
         }
 
         setItens(props.data.itens);
-    },[props.data])
+    }, [props.data])
 
     useEffect(() => {
-        if ( ! props.itens ){
+        if (!props.itens) {
             return;
         }
 
         setItens(props.itens);
 
-    },[props.itens])
+    }, [props.itens])
 
     const RenderTdContent = (config: TableItemConfig<CrudType>, item: CrudType) => {
-        if ( typeof config.renderValue === 'function' ){
+        if (typeof config.renderValue === 'function') {
             return (
                 config.renderValue(item)
             )
         }
 
-        if ( typeof config.renderValue === 'string'){
-            return(
+        if (typeof config.renderValue === 'string') {
+            return (
                 (item as any)[config.renderValue]
             )
         }
@@ -104,28 +104,48 @@ function TableDefault<CrudType>(props: TableDefaultProps<CrudType>) {
                 <Thead>
                     <Tr>
                         {props.tableItemConfigs.map((item, index) => {
+                            const style: React.CSSProperties = {
+
+                            }
+                            if (item.alignment === 'right') {
+                                style.textAlign = 'right'
+                            }
+
+                            if (item.alignment === 'center') {
+                                style.textAlign = 'center'
+                            }
                             return (
-                                <Th key={index}>{item.fieldCaption}</Th>
+                                <Th key={index} style={style}>{item.fieldCaption}</Th>
                             )
                         })}
-                        {props.renderActionCell && 
+                        {props.renderActionCell &&
                             <Th>&nbsp;</Th>
                         }
-                        
+
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {itens &&  itens.map((item, index) => {
+                    {itens && itens.map((item, index) => {
                         return (
                             <Tr key={index}>
                                 {props.tableItemConfigs.map((itemConfig, indexConfig) => {
+                                    const style: React.CSSProperties = {
+
+                                    }
+                                    if (itemConfig.alignment === 'right') {
+                                        style.textAlign = 'right'
+                                    }
+                                    if (itemConfig.alignment === 'center') {
+                                        style.textAlign = 'center'
+                                    }
+
                                     return (
-                                        <Td key={indexConfig}>
+                                        <Td key={indexConfig} style={style}>
                                             {RenderTdContent(itemConfig, item)}
                                         </Td>
                                     )
                                 })}
-                                {props.renderActionCell && 
+                                {props.renderActionCell &&
                                     props.renderActionCell(item)
                                 }
                             </Tr>

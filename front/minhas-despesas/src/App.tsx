@@ -8,13 +8,13 @@ import store from './store/store';
 import { 
   defaultTheme, 
   // greenTheme , 
-  // royalTheme
+   royalTheme
 } from './theme';
 
 function App() {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={defaultTheme}>
+      <ThemeProvider theme={royalTheme}>
         <AppRoutes />
       </ThemeProvider>
     </Provider>

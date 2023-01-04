@@ -12,6 +12,7 @@ const DivRoot = styled.div`
     display: flex;    
     background-color: ${props => props.theme.palette.primary.main};    
     color: ${props => props.theme.palette.primary.contrastText};
+    font-family: ${props => props.theme.font.family.sanSerif};    
     flex: 1;    
     flex-direction: column;
     overflow: auto;
@@ -31,7 +32,7 @@ const DivBody = styled.div`
 `
 
 const Template = () => {
-    const dispach = useAppDispatch();    
+    const dispach = useAppDispatch();
     const location = useLocation();
     const { currentUser } = useAppSelector(state => state.userLogin)
     const [appStarted, setAppStarted] = useState<boolean>(false);
@@ -39,19 +40,19 @@ const Template = () => {
         console.log('APLICAÇÃO INICIADA!');
         dispach(getLoginFromStorage())
         setAppStarted(true);
-    },[])
+    }, [])
 
     useEffect(() => {
-        if ( ! currentUser){
+        if (!currentUser) {
             return;
         }
-        if ( ! currentUser.user || ! currentUser.user.userId ){
+        if (!currentUser.user || !currentUser.user.userId) {
             return;
         }
-        dispach( setContaId(currentUser.user.userId))
-    },[currentUser])
+        dispach(setContaId(currentUser.user.userId))
+    }, [currentUser])
 
-    if (  location.pathname !== '/login' && appStarted && ! currentUser ){
+    if (location.pathname !== '/login' && appStarted && !currentUser) {
         return <Navigate to='/login' />
     }
 
