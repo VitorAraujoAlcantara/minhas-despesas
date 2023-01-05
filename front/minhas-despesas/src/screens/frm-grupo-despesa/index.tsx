@@ -54,7 +54,6 @@ const tableItemConfigs: Array<TableItemConfig<GrupoDespesaDto>> = [
 const FrmGrupoDespesa = () => {
     const dispach = useAppDispatch();
     const { data, deleted } = useAppSelector(state => state.grupoDespesa)
-    const { contaId } = useAppSelector(state => state.app)
     const [idToEdit, setIdToEdit] = useState<string>('')
 
     const crudSlice = grupoDespesaCrudSlice;
@@ -66,7 +65,7 @@ const FrmGrupoDespesa = () => {
                 order: 'Nome',
                 page: 1,
                 filter: {
-                    contaId
+                    contaId: ''
                 }
             })
         )
@@ -104,13 +103,13 @@ const FrmGrupoDespesa = () => {
                     icon="edit"
                     size="small"
                     caption="Editar"
-                    onClick={ () => setIdToEdit(item.grupoDespesaId ?? '') }
+                    onClick={() => setIdToEdit(item.grupoDespesaId ?? '')}
                 />
             </DivAction>
         )
     }
 
-    if ( idToEdit ){
+    if (idToEdit) {
         return (
             <Navigate to={`${idToEdit}/edit`} />
         )

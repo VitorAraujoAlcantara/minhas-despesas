@@ -49,7 +49,7 @@ const ConfigForm: Array<FormAddItemConfig<DespesaCreateDto> | FormAddItemHidedCo
     {
         fieldName: 'valor',
         fieldCaption: 'Valor',
-        inputType: 'number',        
+        inputType: 'number',
         required: true
     },
 ]
@@ -60,8 +60,7 @@ const FrmDespesaAdd = () => {
     const dispach = useAppDispatch();
     const { entity } = useAppSelector(state => state.periodo);
     const { data } = useAppSelector(state => state.grupoDespesa);
-    const { contaId } = useAppSelector(state => state.app);
-    const { created } = useAppSelector(state => state.despesa )
+    const { created } = useAppSelector(state => state.despesa)
     const [despesa, setDespesa] = useState<DespesaCreateDto>({
         descricao: '',
         grupoDespesaId: '',
@@ -79,7 +78,7 @@ const FrmDespesaAdd = () => {
             order: 'Nome',
             page: 1,
             filter: {
-                contaId
+                contaId: ''
             }
 
         }))
@@ -97,7 +96,7 @@ const FrmDespesaAdd = () => {
     }, [data])
 
 
-    if (cancel || ( created && started )) {
+    if (cancel || (created && started)) {
         return (<Navigate to='/expense' />)
     }
 

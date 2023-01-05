@@ -84,10 +84,9 @@ const ActionDiv = styled.div`
 const FrmDespesa = () => {
     const dispach = useAppDispatch();
     const { data, entity, deleted } = useAppSelector(state => state.periodo)
-    const { contaId } = useAppSelector(state => state.app)
     const [filter, setFilter] = useState<PaginatedFilterDataQuery<PeriodoFilterDto>>({
         filter: {
-            contaId
+            contaId: ''
         },
         itensPerPage: 10,
         order: 'Ano_desc;Mes_desc',
@@ -258,7 +257,7 @@ const FrmDespesa = () => {
                             caption="Rem. período"
                             size="small"
                             onClick={handleRemPeriodoClick}
-                            disabled={!entity || entity.valor.toFixed(2) !==  parseFloat('0').toFixed(2) }
+                            disabled={!entity || entity.valor.toFixed(2) !== parseFloat('0').toFixed(2)}
                         />
 
 
@@ -275,7 +274,7 @@ const FrmDespesa = () => {
                             caption="Copiar período"
                             size="small"
                             onClick={() => setShowClonePeriodo(true)}
-                            disabled={!entity || entity.valor.toFixed(2) ===  parseFloat('0').toFixed(2) }
+                            disabled={!entity || entity.valor.toFixed(2) === parseFloat('0').toFixed(2)}
                         />
 
                     </DivToolBar>
@@ -333,7 +332,7 @@ const FrmDespesa = () => {
                     entity={entity}
                     onCancel={() => setShowClonePeriodo(false)}
                     onClone={() => {
-                        setFilter({...filter})
+                        setFilter({ ...filter })
                         setShowClonePeriodo(false)
                     }}
                 />

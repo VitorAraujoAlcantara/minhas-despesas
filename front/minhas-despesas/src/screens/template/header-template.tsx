@@ -23,8 +23,15 @@ const DivTitle = styled.div`
 
 const DivUser = styled.div`
     display: flex;
-    position    : relative ;
-    flex: 1;
+    position: relative ;
+    flex: 1;    
+`
+
+const ImgIcon = styled.img`
+    width: 64px;
+    height: 64px;
+    margin: 0px 10px;
+    filter: drop-shadow(1px 1px 10px ${props => props.theme.palette.primary.main})
 `
 
 const HeaderTemplate = () => {
@@ -34,6 +41,7 @@ const HeaderTemplate = () => {
     return (
         <DivRoot>
             <DivTitle>
+                <ImgIcon src="favicon.png" alt='icone' />
                 {appData.name} - {appData.version}
             </DivTitle>
             {currentUser && currentUser.user &&

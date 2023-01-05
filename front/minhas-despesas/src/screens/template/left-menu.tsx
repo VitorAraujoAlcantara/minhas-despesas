@@ -12,6 +12,7 @@ const DivRoot = styled.div`
     background-color: ${props => props.theme.palette.secondary.main};
     color: ${props => props.theme.palette.secondary.contrastText};
 `
+
 const LeftMenu = () => {
     const { currentUser } = useAppSelector(state => state.userLogin)
     return (
@@ -20,18 +21,21 @@ const LeftMenu = () => {
                 icon="home"
                 caption="Home"
                 to="/"
+                shadow={true}
             />
 
             <BtnIcon
                 icon="folderPlus"
                 caption="+ Grupo"
                 to="/group"
+                shadow={true}
             />
 
             <BtnIcon
                 icon="coins"
                 caption="Despesas"
                 to="/expense"
+                shadow={true}
             />
 
             {currentUser &&
@@ -39,6 +43,7 @@ const LeftMenu = () => {
                     icon="signOut"
                     caption="Logout"
                     to="/login"
+                    shadow={true}
                 />
             }
         </DivRoot>

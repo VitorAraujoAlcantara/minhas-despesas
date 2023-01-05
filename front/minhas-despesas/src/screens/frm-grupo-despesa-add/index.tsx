@@ -19,26 +19,25 @@ const FrmGrupoDespesaAdd = () => {
 
     const dispach = useAppDispatch();
     const crudSlice = grupoDespesaCrudSlice;
-    const {created}  = useAppSelector( state => state.grupoDespesa);
-    const {contaId} = useAppSelector( state => state.app);
+    const { created } = useAppSelector(state => state.grupoDespesa);
     const [itemTemplate, setItemTemplate] = useState<GrupoDespesaCreateDto>(
         {
-            contaId
+            contaId: '00000000-0000-0000-0000-000000000000'
         }
     )
 
     const [started, setStarted] = useState<boolean>(false);
     const [cancel, setCancel] = useState<boolean>(false);
 
-    
+
 
     useEffect(() => {
         dispach(crudSlice.clearData());
         setStarted(true);
-    },[])
+    }, [])
 
 
-    const formConfigs: Array<FormAddItemConfig<GrupoDespesaCreateDto> | FormAddItemHidedConfig<GrupoDespesaCreateDto> > = [
+    const formConfigs: Array<FormAddItemConfig<GrupoDespesaCreateDto> | FormAddItemHidedConfig<GrupoDespesaCreateDto>> = [
         {
             fieldCaption: 'Código',
             fieldName: 'codigo',
@@ -52,20 +51,16 @@ const FrmGrupoDespesaAdd = () => {
             inputType: 'text',
             required: true
         },
-        {
-            fieldName: 'contaId',
-            hidedValue: contaId
-        }
-    ]    
+    ]
 
-    const handleOnSubmit = () => {        
-        dispach( crudSlice.create(itemTemplate) )
+    const handleOnSubmit = () => {
+        dispach(crudSlice.create(itemTemplate))
     }
 
-    if ( cancel === true || (started === true && created === true)){
+    if (cancel === true || (started === true && created === true)) {
         return <Navigate to='/group' />
     }
-    
+
     return (
         <DivRoot>
             <FormHeader>
@@ -75,9 +70,9 @@ const FrmGrupoDespesaAdd = () => {
                 title="GRUPO DE DESPESAS"
                 formConfigs={formConfigs}
                 itemTemplate={itemTemplate}
-                onSubmit={ handleOnSubmit}
-                onUpdateTemplate={ item => setItemTemplate(item)}
-                onCancel={ () => setCancel(true)}
+                onSubmit={handleOnSubmit}
+                onUpdateTemplate={item => setItemTemplate(item)}
+                onCancel={() => setCancel(true)}
             />
 
         </DivRoot>

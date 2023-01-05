@@ -4,6 +4,7 @@ const DivRoot = styled.div`
     display: flex;
     margin: 0px 10px;    
     justify-content: flex-end;
+    align-items: center;
     flex: 1;
 `
 
@@ -23,6 +24,7 @@ const Circle = styled.div`
     &:hover{
         filter: opacity(0.5);
     }
+    filter: drop-shadow(1px 1px 3px ${props => props.theme.palette.primary.main});
 `
 
 interface UserIconProps {

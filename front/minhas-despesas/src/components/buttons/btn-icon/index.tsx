@@ -23,6 +23,7 @@ interface BtnIconProps {
     size?: 'large' | 'normal' | 'small'
     onClick?: () => void
     disabled?: boolean
+    shadow?: boolean
 }
 
 const Btn = styled(Link)`
@@ -40,7 +41,14 @@ const Btn = styled(Link)`
     &:hover{
         background-color: ${props => props.theme.palette.common.white};
         opacity: 0.7;
-        color: ${props => props.theme.palette.common.black};
+        color: ${props => props.theme.palette.common.black};        
+    }    
+`
+
+const BtnShadow = styled(Btn)`
+    filter: drop-shadow(1px 1px 10px ${props => props.theme.palette.primary.main});
+    &:hover{
+        filter: drop-shadow(1px 1px 10px ${props => props.theme.palette.primary.contrastText})
     }
 `
 
@@ -81,7 +89,7 @@ const BtnIcon = (props: BtnIconProps) => {
         case 'copy':
             icon = faCopy;
             break;
-        case 'signOut': 
+        case 'signOut':
             icon = faSignOut;
             break;
     }
@@ -103,6 +111,26 @@ const BtnIcon = (props: BtnIconProps) => {
         style.filter = 'opacity(0.3)';
     }
 
+    if (props.shadow === true) {
+        return (
+            <BtnShadow
+                to={props.to ?? ''}
+                style={style}
+                onClick={e => {
+                    if (props.onClick) {
+                        props.onClick();
+                    }
+                }}
+            >
+                <FontAwesomeIcon icon={icon} />
+                {props.caption &&
+                    <DivCaption>
+                        {props.caption}
+                    </DivCaption>
+                }
+            </BtnShadow>
+        )
+    }
     return (
         <Btn
             to={props.to ?? ''}
