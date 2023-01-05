@@ -96,15 +96,15 @@ const DivContaDetail = (props: DivContaDetailProps) => {
                         <input type='radio' checked={theme === 'dark'} onClick={e => changeAppTheme('dark')} />
                     </label>
                     <label>
-                        Night
+                        Noite
                         <input type='radio' checked={theme === 'night'} onClick={e => changeAppTheme('night')} />
                     </label>
                     <label>
-                        Coffe
+                        Café
                         <input type='radio' checked={theme === 'coffe'} onClick={e => changeAppTheme('coffe')} />
                     </label>
                     <label>
-                        Sea
+                        Oceano
                         <input type='radio' checked={theme === 'sea'} onClick={e => changeAppTheme('sea')} />
                     </label>
                     <label>

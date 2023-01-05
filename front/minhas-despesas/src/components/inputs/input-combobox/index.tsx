@@ -27,9 +27,13 @@ const Select = styled.select`
     box-shadow:  0px 0px 50px #cccccc07;
     border: 1px solid #cccccc1f;
     background-color: #ffffff00;
-    color: #fff;
+    color: ${props => props.theme.palette.primary.contrastText};
     padding: 10px;
     font-size: 1rem;
+`
+
+const SelectSecondary = styled(Select)`
+    color: ${props => props.theme.palette.secondary.contrastText};
 `
 
 const Option = styled.option`
@@ -40,12 +44,13 @@ const Option = styled.option`
 interface InputCombobobxProps {
     caption: string;
     value: string;
-    name?:string;
-    onChange: (value:string) => void;
+    name?: string;
+    onChange: (value: string) => void;
     autoFocus?: boolean;
     required?: boolean;
     list: Array<ListItem>;
     emptyValue?: ListItem;
+    theme?: 'primary' | 'secondary';
 }
 
 const InputCombobobx = (props: InputCombobobxProps) => {
@@ -64,25 +69,47 @@ const InputCombobobx = (props: InputCombobobxProps) => {
                 </Label>
             </DivLabel>
             <DivInput>
-                <Select
-                    value={props.value}
-                    name={props.name}                    
-                    ref={inputRef}
-                    autoFocus={props.autoFocus}
-                    required={props.required}
-                    onChange={e => props.onChange(e.target.value)}
-                >
-                    {props.emptyValue && 
-                        <Option value={props.emptyValue.key}>{props.emptyValue.value}</Option>
-                    }
+                {props.theme === 'secondary' ?
+                    <SelectSecondary
+                        value={props.value}
+                        name={props.name}
+                        ref={inputRef}
+                        autoFocus={props.autoFocus}
+                        required={props.required}
+                        onChange={e => props.onChange(e.target.value)}
+                    >
+                        {props.emptyValue &&
+                            <Option value={props.emptyValue.key}>{props.emptyValue.value}</Option>
+                        }
 
-                    {props.list.map( item => 
+                        {props.list.map(item =>
                         (
                             <Option key={item.key} value={item.key}>{item.value}</Option>
                         )
-                    )}
+                        )}
 
-                </Select>
+                    </SelectSecondary>
+                    :
+                    <Select
+                        value={props.value}
+                        name={props.name}
+                        ref={inputRef}
+                        autoFocus={props.autoFocus}
+                        required={props.required}
+                        onChange={e => props.onChange(e.target.value)}
+                    >
+                        {props.emptyValue &&
+                            <Option value={props.emptyValue.key}>{props.emptyValue.value}</Option>
+                        }
+
+                        {props.list.map(item =>
+                        (
+                            <Option key={item.key} value={item.key}>{item.value}</Option>
+                        )
+                        )}
+
+                    </Select>
+                }
 
             </DivInput>
         </DivRoot>

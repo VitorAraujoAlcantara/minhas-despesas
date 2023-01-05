@@ -125,6 +125,7 @@ const FrmLogin = () => {
                                     onChangeValue={v => setLoginData({ ...loginData, email: v })}
                                     value={loginData.email}
                                     autoFocus={true}
+                                    theme='secondary'
                                 />
                             </DivRow>
 
@@ -135,6 +136,7 @@ const FrmLogin = () => {
                                     required={true}
                                     onChangeValue={v => setLoginData({ ...loginData, password: v })}
                                     value={loginData.password}
+                                    theme='secondary'
                                 />
                             </DivRow>
                         </FrmBody>
