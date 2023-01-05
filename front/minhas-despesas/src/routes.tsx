@@ -12,7 +12,7 @@ import Home from "./screens/home"
 import Template from "./screens/template"
 import { useAppDispatch, useAppSelector } from "./store/hooks"
 import { getThemeFromLocalStorage } from "./store/reducers/app"
-import { defaultTheme, greenTheme, royalTheme } from "./theme"
+import { coffeTheme, darkTheme, defaultTheme, greenTheme, nightTheme, royalTheme, seaTheme, vintageTheme } from "./theme"
 
 const AppRoutes = () => {
     const dispach = useAppDispatch();
@@ -30,6 +30,21 @@ const AppRoutes = () => {
                 break;
             case 'green':
                 setCurrentTheme(greenTheme);
+                break;
+            case 'dark':
+                setCurrentTheme(darkTheme);
+                break;
+            case 'night':
+                setCurrentTheme(nightTheme);
+                break;
+            case 'coffe':
+                setCurrentTheme(coffeTheme);
+                break;
+            case 'sea':
+                setCurrentTheme(seaTheme);
+                break;
+            case 'vintage':
+                setCurrentTheme(vintageTheme);
                 break;
             default:
                 setCurrentTheme(defaultTheme);

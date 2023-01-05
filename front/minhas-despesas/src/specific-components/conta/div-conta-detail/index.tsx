@@ -33,6 +33,7 @@ const FieldSet = styled.fieldset`
     border: 1px solid ${props => props.theme.palette.secondary.main};
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 `
 
 interface DivContaDetailProps {
@@ -89,6 +90,26 @@ const DivContaDetail = (props: DivContaDetailProps) => {
                     <label>
                         Royal
                         <input type='radio' checked={theme === 'royal'} onClick={e => changeAppTheme('royal')} />
+                    </label>
+                    <label>
+                        Dark
+                        <input type='radio' checked={theme === 'dark'} onClick={e => changeAppTheme('dark')} />
+                    </label>
+                    <label>
+                        Night
+                        <input type='radio' checked={theme === 'night'} onClick={e => changeAppTheme('night')} />
+                    </label>
+                    <label>
+                        Coffe
+                        <input type='radio' checked={theme === 'coffe'} onClick={e => changeAppTheme('coffe')} />
+                    </label>
+                    <label>
+                        Sea
+                        <input type='radio' checked={theme === 'sea'} onClick={e => changeAppTheme('sea')} />
+                    </label>
+                    <label>
+                        Vintage
+                        <input type='radio' checked={theme === 'vintage'} onClick={e => changeAppTheme('vintage')} />
                     </label>
                 </FieldSet>
             </DivBody>

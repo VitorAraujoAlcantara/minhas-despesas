@@ -68,3 +68,108 @@ export const royalTheme: DefaultTheme = {
         }
     }
 }
+
+export const darkTheme: DefaultTheme = {
+    ...defaultTheme,
+    palette: {
+        common: {
+            ...defaultTheme.palette.common
+        },
+        primary: {
+            main: '#000000',
+            contrastText: '#C69749'
+        },
+        secondary: {
+            main: '#282A3A',
+            contrastText: '#ffffff'
+        },
+        danger: {
+            main: '#bd2b48',
+            contrastText: '#ffffff'
+        }
+    }
+}
+
+export const nightTheme: DefaultTheme = {
+    ...defaultTheme,
+    palette: {
+        common: {
+            ...defaultTheme.palette.common
+        },
+        primary: {
+            main: '#14274E',
+            contrastText: '#ffffff'
+        },
+        secondary: {
+            main: '#394867',
+            contrastText: '#ffffff'
+        },
+        danger: {
+            main: '#bd2b48',
+            contrastText: '#ffffff'
+        }
+    }
+}
+
+export const coffeTheme: DefaultTheme = {
+    ...defaultTheme,
+    palette: {
+        common: {
+            ...defaultTheme.palette.common
+        },
+        primary: {
+            main: '#1A120B',
+            contrastText: '#D5CEA3'
+        },
+        secondary: {
+            main: '#3C2A21',
+            contrastText: '#E5E5CB'
+        },
+        danger: {
+            main: '#D1512D',
+            contrastText: '#ffffff'
+        }
+    }
+}
+
+export const seaTheme: DefaultTheme = {
+    ...defaultTheme,
+    palette: {
+        common: {
+            ...defaultTheme.palette.common
+        },
+        primary: {
+            main: '#277BC0',
+            contrastText: '#FFF4CF'
+        },
+        secondary: {
+            main: '#5BC0F8',
+            contrastText: '#FFFFFF'
+        },
+        danger: {
+            main: '#D1512D',
+            contrastText: '#ffffff'
+        }
+    }
+}
+
+export const vintageTheme: DefaultTheme = {
+    ...defaultTheme,
+    palette: {
+        common: {
+            ...defaultTheme.palette.common
+        },
+        primary: {
+            main: '#2B3A55',
+            contrastText: '#E8C4C4'
+        },
+        secondary: {
+            main: '#CE7777',
+            contrastText: '#F2E5E5'
+        },
+        danger: {
+            main: '#D1512D',
+            contrastText: '#ffffff'
+        }
+    }
+}

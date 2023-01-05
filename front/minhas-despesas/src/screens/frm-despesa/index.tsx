@@ -28,6 +28,7 @@ const DivRoot = styled(Box)`
 const DivToolBar = styled(BoxBottom)`
     display: flex;
     padding: 0px 10px;
+    gap: 10px;
 `
 
 const DivPageControl = styled.div`
