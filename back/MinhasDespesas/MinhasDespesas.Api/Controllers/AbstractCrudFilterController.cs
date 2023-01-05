@@ -21,7 +21,7 @@ public abstract class AbstractCrudFilterController<Entity, Dto, CreateDto, Filte
     }
 
     [HttpGet("filter")]
-    public async Task<PaginationResponse<Dto>> GetAllByFilterAsync([FromQuery] PaginatedDataQueryDto pgData, [FromQuery] Filter filter)
+    public virtual async Task<PaginationResponse<Dto>> GetAllByFilterAsync([FromQuery] PaginatedDataQueryDto pgData, [FromQuery] Filter filter)
     {
         var ret = await crudService.GetAllByFilterAsync(
             pgData.ItensPerPage,

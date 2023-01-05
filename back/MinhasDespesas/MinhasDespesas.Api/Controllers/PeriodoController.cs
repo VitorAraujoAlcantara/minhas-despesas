@@ -6,6 +6,7 @@ using MinhasDespesas.Models.Entities;
 using MinhasDespesas.Models.Enums;
 using MinhasDespesas.Models.Filters;
 using MinhasDespesas.Services.Interfaces;
+using PtcSimpleCrud.Models.Objects;
 using PtcSimpleCrud.Service.Interfaces;
 
 namespace MinhasDespesas.Api.Controllers;
@@ -41,5 +42,16 @@ public class PeriodoController: AbstractCrudFilterController<Periodo,PeriodoDto,
 
         await unitOfWorkService.CommitAsync(Guid.Empty);
         return ret;
+    }
+
+    public override Task<PaginationResponse<PeriodoDto>> GetAllByFilterAsync(PaginatedDataQueryDto pgData, PeriodoFilter filter)
+    {
+        filter.ContaId = UserId;
+        return base.GetAllByFilterAsync(pgData, filter);
+    }
+
+    public override Task<PaginationResponse<PeriodoDto>> GetAllAsync(PaginatedDataQueryDto paginatedDataQuery)
+    {
+        throw new NotImplementedException();
     }
 }

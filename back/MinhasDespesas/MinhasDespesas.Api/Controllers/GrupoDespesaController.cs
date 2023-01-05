@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MinhasDespesas.Models.Dtos;
 using MinhasDespesas.Models.Entities;
 using MinhasDespesas.Models.Filters;
+using PtcSimpleCrud.Models.Objects;
 using PtcSimpleCrud.Service.Interfaces;
 
 namespace MinhasDespesas.Api.Controllers;
@@ -20,5 +21,22 @@ public class GrupoDespesaController: AbstractCrudFilterController<GrupoDespesa,G
     protected override void SetKeyToEntity(GrupoDespesa entity, Guid id)
     {
         entity.GrupoDespesaId = id;
+    }
+
+    public override Task<PaginationResponse<GrupoDespesaDto>> GetAllByFilterAsync(PaginatedDataQueryDto pgData, GrupoDespesaFilter filter)
+    {
+        filter.ContaId = UserId;
+        return base.GetAllByFilterAsync(pgData, filter);
+    }
+
+    public override Task<GrupoDespesaDto?> CreateAsync(IUnitOfWorkService unitOfWorkService, GrupoDespesaCreateDto dto)
+    {
+        dto.ContaId = UserId;
+        return base.CreateAsync(unitOfWorkService, dto);
+    }
+
+    public override Task<PaginationResponse<GrupoDespesaDto>> GetAllAsync(PaginatedDataQueryDto paginatedDataQuery)
+    {
+        throw new NotImplementedException();
     }
 }
