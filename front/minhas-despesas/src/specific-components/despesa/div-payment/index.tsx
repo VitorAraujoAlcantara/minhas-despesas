@@ -95,6 +95,7 @@ const DivPayment = (props: DivPaymentProps) => {
                             value={payment.valor.toString()}
                             autoFocus={true}
                             required={true}
+                            theme='secondary'
                         />
                         <InputText
                             caption="Observação:"
@@ -105,9 +106,10 @@ const DivPayment = (props: DivPaymentProps) => {
                                 )
                             }}
                             value={payment.observacao}
+                            theme='secondary'
                         />
 
-                        {erro && 
+                        {erro &&
                             <LabelBold>{erro}</LabelBold>
                         }
                     </DivFrmPaymentBody>

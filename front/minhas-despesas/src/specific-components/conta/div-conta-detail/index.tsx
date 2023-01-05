@@ -111,6 +111,10 @@ const DivContaDetail = (props: DivContaDetailProps) => {
                         Vintage
                         <input type='radio' checked={theme === 'vintage'} onClick={e => changeAppTheme('vintage')} />
                     </label>
+                    <label>
+                        Neon
+                        <input type='radio' checked={theme === 'neon'} onClick={e => changeAppTheme('neon')} />
+                    </label>
                 </FieldSet>
             </DivBody>
 

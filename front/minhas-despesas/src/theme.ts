@@ -173,3 +173,25 @@ export const vintageTheme: DefaultTheme = {
         }
     }
 }
+
+export const neonTheme: DefaultTheme = {
+    ...defaultTheme,
+    palette: {
+        common: {
+            ...defaultTheme.palette.common,
+            white: '#204969'
+        },
+        primary: {
+            main: '#FAEEE7',
+            contrastText: '#0A97B0'
+        },
+        secondary: {
+            main: '#4CD3C2',
+            contrastText: '#F54291'
+        },
+        danger: {
+            main: '#E71414',
+            contrastText: '#ffffff'
+        }
+    }
+}

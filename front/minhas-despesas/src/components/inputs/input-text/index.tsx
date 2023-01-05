@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import styled from "styled-components";
-import { FormAddItemConfig } from "../../../types/form-add-item-config";
 
 const DivRoot = styled.div`
     display: flex;
@@ -27,30 +26,35 @@ const Input = styled.input`
     box-shadow:  0px 0px 50px #cccccc07;
     border: 1px solid #cccccc1f;
     background-color: #ffffff00;
-    color: #fff;
+    color: ${props => props.theme.palette.primary.contrastText};
     padding: 10px;
     font-size: 1rem;
 `
 
-interface InputTextProps{    
+const InputSecondary = styled(Input)`
+    color: ${props => props.theme.palette.secondary.contrastText};
+`
+
+interface InputTextProps {
     onChangeValue: (value: string) => void;
-    caption: string;    
+    caption: string;
     name?: string;
     value?: string;
     required?: boolean;
     autoFocus?: boolean;
     inputType: 'text' | 'number' | 'email' | 'password';
+    theme?: 'primary' | 'secondary';
 }
 
-function InputText(props: InputTextProps){
+function InputText(props: InputTextProps) {
     const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-    return(
+    return (
         <DivRoot>
             <DivLabel>
                 <Label
-                    onClick={() =>{
-                        if ( inputRef && inputRef.current){
+                    onClick={() => {
+                        if (inputRef && inputRef.current) {
                             inputRef.current.focus();
                         }
                     }}
@@ -59,16 +63,30 @@ function InputText(props: InputTextProps){
                 </Label>
             </DivLabel>
             <DivInput>
-                <Input
-                    value={props.value}
-                    name={props.name}
-                    type={props.inputType}
-                    ref={inputRef}
-                    autoFocus={props.autoFocus}
-                    required={props.required}    
-                    onChange={ e => props.onChangeValue(e.target.value)}
-                    step="0.01"
-                />
+                {props.theme === 'secondary' ?
+                    <InputSecondary
+                        value={props.value}
+                        name={props.name}
+                        type={props.inputType}
+                        ref={inputRef}
+                        autoFocus={props.autoFocus}
+                        required={props.required}
+                        onChange={e => props.onChangeValue(e.target.value)}
+                        step="0.01"
+                    />
+                    :
+                    <Input
+                        value={props.value}
+                        name={props.name}
+                        type={props.inputType}
+                        ref={inputRef}
+                        autoFocus={props.autoFocus}
+                        required={props.required}
+                        onChange={e => props.onChangeValue(e.target.value)}
+                        step="0.01"
+                    />
+                }
+
 
             </DivInput>
 

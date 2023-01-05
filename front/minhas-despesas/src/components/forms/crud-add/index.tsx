@@ -48,7 +48,7 @@ interface CrudAddProps<CrudType> {
     onSubmit: () => void;
     onUpdateTemplate: (item: CrudType) => void;
     onCancel: () => void;
-    listItens?: {[key:string]: Array<ListItem>}
+    listItens?: { [key: string]: Array<ListItem> }
 }
 function CrudAdd<CrudType>(props: CrudAddProps<CrudType>) {
 
@@ -77,7 +77,7 @@ function CrudAdd<CrudType>(props: CrudAddProps<CrudType>) {
         if ("fieldCaption" in config) {
             return (
                 <InputText
-                    value={(props.itemTemplate as any)[config.fieldName]}                    
+                    value={(props.itemTemplate as any)[config.fieldName]}
                     caption={config.fieldCaption}
                     inputType={config.inputType}
                     autoFocus={config.autoFocus}
@@ -87,11 +87,12 @@ function CrudAdd<CrudType>(props: CrudAddProps<CrudType>) {
                         (props.itemTemplate as any)[config.fieldName] = v;
                         props.onUpdateTemplate(props.itemTemplate);
                     }}
+                    theme='secondary'
                 />
             )
         }
 
-        if ( "comboCaption" in config && props.listItens ){
+        if ("comboCaption" in config && props.listItens) {
             return (
                 <InputCombobobx
                     caption={config.comboCaption}

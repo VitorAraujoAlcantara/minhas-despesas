@@ -25,7 +25,7 @@ const DivTabs = styled.div`
 `
 
 const Tab = styled(Button)`
-    
+    color: ${props => props.theme.palette.common.white};
 `
 
 const TabActive = styled(Tab)`
@@ -60,7 +60,7 @@ interface PageControlProps {
 const PageControl = (props: PageControlProps) => {
     const [urlRedirect, setUrlRedirect] = useState<string>('');
 
-    if ( urlRedirect){
+    if (urlRedirect) {
         return <Navigate to={urlRedirect} />
     }
 
@@ -89,7 +89,7 @@ const PageControl = (props: PageControlProps) => {
                             return (
                                 <TabActive
                                     key={tab.key}
-                                    onClick={e => {                                        
+                                    onClick={e => {
 
                                         if (!props.onTabClick) {
                                             return;
