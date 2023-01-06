@@ -12,6 +12,7 @@ const DivRoot = styled(Box)`
     background-color: ${props => props.theme.palette.primary.main};
     color: ${props => props.theme.palette.primary.contrastText};
     flex-direction: column;
+    max-width: 270px;
 `
 
 const DivBody = styled.div`

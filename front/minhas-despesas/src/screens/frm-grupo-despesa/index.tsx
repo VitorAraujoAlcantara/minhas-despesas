@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
-import Box, { BoxBottom } from "../../components/box";
+import Alert from "../../components/alert";
+import Box from "../../components/box";
 import BtnIcon from "../../components/buttons/btn-icon";
 import CrudSearch from "../../components/forms/crud-search";
 import FormHeader from "../../components/forms/form-header";
@@ -53,8 +54,9 @@ const tableItemConfigs: Array<TableItemConfig<GrupoDespesaDto>> = [
 
 const FrmGrupoDespesa = () => {
     const dispach = useAppDispatch();
-    const { data, deleted } = useAppSelector(state => state.grupoDespesa)
+    const { data, deleted, erro } = useAppSelector(state => state.grupoDespesa)
     const [idToEdit, setIdToEdit] = useState<string>('')
+    const [showErro, setShowErro] = useState<boolean>(false)
 
     const crudSlice = grupoDespesaCrudSlice;
 
@@ -88,6 +90,14 @@ const FrmGrupoDespesa = () => {
         )
 
     }, [deleted])
+
+    useEffect(() => {
+        if (!erro) {
+            return;
+        }
+
+        setShowErro(true);
+    }, [erro])
 
     const renderActioncell = (item: GrupoDespesaDto) => {
         return (
@@ -130,6 +140,13 @@ const FrmGrupoDespesa = () => {
 
 
             </Form>
+            <Alert
+                text={erro ?? ''}
+                title='Ocorreu um erro'
+                type="erro"
+                onOk={() => setShowErro(false)}
+                show={showErro}
+            />
         </DivRoot>
     )
 }

@@ -4,7 +4,7 @@ import { useAppSelector } from "../../store/hooks";
 
 
 const DivRoot = styled.div`
-    padding: 10px;
+    padding: 5px;
     display: flex;
     flex-direction: column;    
     box-shadow:  0px 0px 10px #cccccc07;
