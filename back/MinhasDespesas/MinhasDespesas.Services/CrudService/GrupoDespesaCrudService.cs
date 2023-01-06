@@ -9,8 +9,11 @@ namespace MinhasDespesas.Services.CrudService
 {
     internal class GrupoDespesaCrudService : CrudService<GrupoDespesa>, IGrupoDespesaCrudService
     {
-        public GrupoDespesaCrudService(ICrudRepository<GrupoDespesa> crudRepository, IPaginationService<GrupoDespesa> paginationService) : base(crudRepository, paginationService)
+        public GrupoDespesaCrudService(
+            ICrudInterceptorService<GrupoDespesa> crudInterceptor,
+            ICrudRepository<GrupoDespesa> crudRepository, IPaginationService<GrupoDespesa> paginationService) : base(crudRepository, paginationService)
         {
+            AddInterceptor(crudInterceptor);
         }
 
         public async Task<IList<GrupoDespesa>> ObterGruposDespesasRaizAsync(Guid contaContaId)

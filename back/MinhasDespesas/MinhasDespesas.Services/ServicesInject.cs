@@ -19,7 +19,11 @@ public static class ServicesInject
     {
         service.AddTransient<IGrupoDespesaCrudService, GrupoDespesaCrudService>();
         service.AddTransient<ICrudFilterService<GrupoDespesa, GrupoDespesaFilter>, GrupoDespesaFilterService>();
-        service.AddCrudService<GrupoDespesa, MinhasDespesasContext>();
+        // GRUPO DESPESA
+        // service.AddCrudService<GrupoDespesa, MinhasDespesasContext>();
+        service.AddTransient<ICrudInterceptorService<GrupoDespesa>, GrupoDespesaCrudIntereceptorService>();
+        service.AddCrudServiceWithouRepository<GrupoDespesa, GrupoDespesaCrudService>();
+
         service.AddCrudService<Conta, MinhasDespesasContext>();
         service.AddCrudService<Despesa, MinhasDespesasContext>();
 
