@@ -2,26 +2,26 @@ import { createSlice, PayloadAction, createAsyncThunk, Draft, AsyncThunk, Slice,
 import { WritableDraft } from 'immer/dist/internal';
 import { PaginatedFilterDataQuery } from '../models/paginated-filter-data-query';
 import { PaginationResponse } from '../models/pagination-reponse';
-import { ValidationError } from '../models/validation-error';
-// import { PaginatedFilterDataQuery, PaginationResponse, ValidationError } from '../models';
+// import { ValidationError } from '../models/validation-error';
+import { ValidationException } from '../types/validation-exception';
 
 import crudApi from './crud-api';
 
 const ACESSO_INVALIDO = 'Acesso inválido.';
 const ACESSO_NAO_AUTORIZADO = 'Acesso não autorizado.';
-export interface CrudSliceType<CrudType, CrudFilterType, CrudErrorsType, CrudCreateType> {
+export interface CrudSliceType<CrudType, CrudFilterType, CrudCreateType> {
     getItemsByFilter: AsyncThunk<PaginationResponse<CrudType>, PaginatedFilterDataQuery<CrudFilterType>, {}>;
     getEntityById: AsyncThunk<CrudType, string, {}>;
     deleteEntityById: AsyncThunk<void, string, {}>;
     update: AsyncThunk<CrudType, CrudCreateType, {}>;
     create: AsyncThunk<CrudType, CrudCreateType, {}>;
-    slice: Slice<CrudState<CrudType, CrudFilterType, CrudErrorsType>, {
-        clearData: (state: WritableDraft<CrudState<CrudType, CrudFilterType, CrudErrorsType>>) => void;
+    slice: Slice<CrudState<CrudType, CrudFilterType>, {
+        clearData: (state: WritableDraft<CrudState<CrudType, CrudFilterType>>) => void;
     }, string>;
     clearData: ActionCreatorWithoutPayload<string>;
 }
 
-interface CrudState<CrudType, CrudFilterType, CrudErrorsType> {
+interface CrudState<CrudType, CrudFilterType> {
     entity?: CrudType;
     data?: PaginationResponse<CrudType> | undefined;
     dataFilter?: PaginatedFilterDataQuery<CrudFilterType> | undefined;
@@ -31,20 +31,21 @@ interface CrudState<CrudType, CrudFilterType, CrudErrorsType> {
     created?: boolean | undefined;
     updated?: boolean | undefined;
     deleted?: boolean | undefined;
-    entityErros?: ValidationError<CrudErrorsType> | undefined;
+    // entityErros?: ValidationError<CrudErrorsType> | undefined;
+    entityErros?: Array<ValidationException> | undefined
     unauthorized?: boolean;
 }
 
 
 
-function CrudSlice<CrudType, CrudFilterType, CrudErrorsType, CrudCreateType>(
+function CrudSlice<CrudType, CrudFilterType, CrudCreateType>(
     prefix: string,
     keyFieldName: string
-): CrudSliceType<CrudType, CrudFilterType, CrudErrorsType, CrudCreateType> {
+): CrudSliceType<CrudType, CrudFilterType, CrudCreateType> {
 
 
 
-    const initialState: CrudState<CrudType, CrudFilterType, CrudErrorsType> = {
+    const initialState: CrudState<CrudType, CrudFilterType> = {
         entity: undefined,
         data: undefined,
         dataFilter: {

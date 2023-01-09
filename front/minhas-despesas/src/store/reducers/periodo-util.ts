@@ -1,11 +1,7 @@
-import { createSlice, PayloadAction, createAsyncThunk, Draft, AsyncThunk, Slice, ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
-import { WritableDraft } from 'immer/dist/internal';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { ClonarPeriodoDto } from '../../models/clonar-periodo-dto';
 import { PeriodoDto } from '../../models/periodo-dto';
 import { post } from '../api';
-import { urlApi } from '../../utils/api-config';
-// import { PaginatedFilterDataQuery, PaginationResponse, ValidationError } from '../models';
-
 
 const ACESSO_INVALIDO = 'Acesso inválido.';
 const ACESSO_NAO_AUTORIZADO = 'Acesso não autorizado.';

@@ -52,7 +52,7 @@ const Template = () => {
         dispach(setContaId(currentUser.user.userId))
     }, [currentUser])
 
-    if (location.pathname !== '/login' && appStarted && !currentUser) {
+    if (location.pathname !== '/' && location.pathname !== '/login' && location.pathname !== '/user/add' && appStarted && !currentUser) {
         return <Navigate to='/login' />
     }
 

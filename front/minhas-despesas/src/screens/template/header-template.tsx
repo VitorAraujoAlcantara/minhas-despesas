@@ -4,6 +4,7 @@ import Popup from "../../components/popup";
 import UserIcon from "../../components/user-icon";
 import DivContaDetail from "../../specific-components/conta/div-conta-detail";
 import { useAppSelector } from "../../store/hooks";
+import imgIcon from '../../assets/imgs/favicon.png';
 
 const DivRoot = styled.div`
     border: 1px solid #cccccc1f;
@@ -41,7 +42,7 @@ const HeaderTemplate = () => {
     return (
         <DivRoot>
             <DivTitle>
-                <ImgIcon src="favicon.png" alt='icone' />
+                <ImgIcon src={imgIcon} alt='icone' />
                 {appData.name} - {appData.version}
             </DivTitle>
             {currentUser && currentUser.user &&

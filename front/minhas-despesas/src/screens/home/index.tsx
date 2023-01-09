@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import Hr from "../../components/hr"
 import { useAppSelector } from "../../store/hooks"
 
 const DivRoot = styled.div`
@@ -13,12 +14,6 @@ const A = styled.a`
     text-decoration: none;
     color: ${props => props.theme.palette.secondary.contrastText};
 `
-
-const Hr = styled.hr`
-    border: 1px solid ${props => props.theme.palette.secondary.main};
-    width: 100%;
-`
-
 const Footer = styled.footer`
     padding: 10px;
     display: flex;

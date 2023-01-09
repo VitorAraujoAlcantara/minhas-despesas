@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 import Box, { BoxBottom } from "../../components/box";
 import BtnSubmit from "../../components/buttons/btn-submit";
+import Button from "../../components/buttons/button";
 import FormHeader from "../../components/forms/form-header";
 import InputText from "../../components/inputs/input-text";
-import LabelBold from "../../components/labels/label-bold";
 import ModalPanelDefault from "../../components/modals/modal-panel-default";
 import { LoginDto } from "../../models/login-dto";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
@@ -50,6 +51,18 @@ const ErroText = styled(DivRow)`
     margin: 10px;
 `
 
+const LinkAdd = styled(Link)`
+    color: ${props => props.theme.palette.primary.contrastText};
+    text-decoration: none;
+    padding: 10px;
+    box-shadow:  0px 0px 50px #cccccc07;
+    border: 1px solid #cccccc1f;
+    text-align: center;
+    &:hover{
+        filter: opacity(0.5);
+    }
+`
+
 const FrmLogin = () => {
 
     const dispatch = useAppDispatch();
@@ -77,7 +90,7 @@ const FrmLogin = () => {
             return;
         }
 
-        if ( ! currentUser.user || ! currentUser.user.userId){
+        if (!currentUser.user || !currentUser.user.userId) {
             return;
         }
 
@@ -153,6 +166,13 @@ const FrmLogin = () => {
                         </DivRow>
                     </Fieldset>
                 </Frm>
+                <DivRow>
+                    <LinkAdd
+                        to='/user/add'
+                    >
+                        Cadastrar novo usuário
+                    </LinkAdd>
+                </DivRow>
 
             </DivRoot>
         </ModalPanelDefault>

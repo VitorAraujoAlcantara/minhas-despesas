@@ -8,6 +8,7 @@ import FrmGrupoDespesa from "./screens/frm-grupo-despesa"
 import FrmGrupoDespesaAdd from "./screens/frm-grupo-despesa-add"
 import FrmGrupoDespesaEdit from "./screens/frm-grupo-despesa-edit"
 import FrmLogin from "./screens/frm-login"
+import FrmUserAdd from "./screens/frm-user-add"
 import Home from "./screens/home"
 import Template from "./screens/template"
 import { useAppDispatch, useAppSelector } from "./store/hooks"
@@ -73,6 +74,9 @@ const AppRoutes = () => {
                     <Route path="/expense/:id" element={<FrmDespesa />} />
                     <Route path="/expense/period/add" element={<FrmDespesaPeriodoAdd />} />
                     <Route path="/expense/:id/add" element={<FrmDespesaAdd />} />
+
+                    {/* Usuários */}
+                    <Route path="/user/add" element={<FrmUserAdd />} />
 
                 </Route>
             </Routes>

@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import styled from "styled-components";
+import { ValidationException } from "../../../types/validation-exception";
+import InputValidation from "../input-validation";
 
 const DivRoot = styled.div`
     display: flex;
@@ -19,6 +21,7 @@ const DivInput = styled.div`
     flex: 1;
     padding: 10px 0px;
     display: flex;
+    flex-direction: column;
 `
 
 const Input = styled.input`
@@ -44,6 +47,7 @@ interface InputTextProps {
     autoFocus?: boolean;
     inputType: 'text' | 'number' | 'email' | 'password';
     theme?: 'primary' | 'secondary';
+    validationErro?: ValidationException;
 }
 
 function InputText(props: InputTextProps) {
@@ -86,6 +90,11 @@ function InputText(props: InputTextProps) {
                         step="0.01"
                     />
                 }
+
+                <InputValidation
+                    validationErro={props.validationErro}
+                />
+
 
 
             </DivInput>
