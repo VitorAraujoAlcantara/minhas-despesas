@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
     <PackageReference Include="PtcSimpleCrud.Models" Version="1.0.4-alpha" />
     <PackageReference Include="PtcSimpleCrud.Repositories" Version="1.0.4-alpha" />
     <PackageReference Include="PtcSimpleToken" Version="1.0.1" />

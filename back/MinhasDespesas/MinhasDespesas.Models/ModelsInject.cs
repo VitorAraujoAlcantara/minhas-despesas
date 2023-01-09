@@ -1,4 +1,7 @@
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using MinhasDespesas.Models.Dtos;
+using MinhasDespesas.Models.Validators;
 
 namespace MinhasDespesas.Models
 {
@@ -7,6 +10,7 @@ namespace MinhasDespesas.Models
         public static void AddMappers(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(MapperProfiler));
+            services.AddTransient<IValidator<ContaCreateDto>, ContaCreateDtoValidator>();
         }
     }
 }
