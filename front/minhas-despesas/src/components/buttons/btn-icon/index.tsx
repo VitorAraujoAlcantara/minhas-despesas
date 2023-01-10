@@ -11,14 +11,15 @@ import {
     faTrash,
     faMoneyCheckDollar,
     faCopy,
-    faSignOut
+    faSignOut,
+    faFilter
 } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import { CSSProperties } from "react";
 
 interface BtnIconProps {
     caption?: string
-    icon: 'home' | 'folderPlus' | 'coins' | 'plus' | 'minus' | 'edit' | 'trash' | 'moneyCheckDollar' | 'copy' | 'signOut'
+    icon: 'filter' | 'home' | 'folderPlus' | 'coins' | 'plus' | 'minus' | 'edit' | 'trash' | 'moneyCheckDollar' | 'copy' | 'signOut'
     to?: string
     size?: 'large' | 'normal' | 'small'
     onClick?: () => void
@@ -91,6 +92,9 @@ const BtnIcon = (props: BtnIconProps) => {
             break;
         case 'signOut':
             icon = faSignOut;
+            break;
+        case 'filter':
+            icon = faFilter;
             break;
     }
     let style: CSSProperties = {

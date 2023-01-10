@@ -10,7 +10,7 @@ const DivRoot = styled.div`
 `;
 
 const DivLabel = styled.div`
-    font-size: 1rem;
+    
 `
 
 const Label = styled.label`
@@ -30,8 +30,7 @@ const Input = styled.input`
     border: 1px solid #cccccc1f;
     background-color: #ffffff00;
     color: ${props => props.theme.palette.primary.contrastText};
-    padding: 10px;
-    font-size: 1rem;
+    padding: 10px;    
 `
 
 const InputSecondary = styled(Input)`

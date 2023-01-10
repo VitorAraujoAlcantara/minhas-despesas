@@ -7,13 +7,17 @@ import ModalPanelDefault from "../../components/modals/modal-panel-default";
 import PageControl from "../../components/page-control";
 import TableDefault from "../../components/tables/table-default";
 import { DespesaDto } from "../../models/despesa-dto";
+import { DespesaFilterDto } from "../../models/despesa-filter-dto";
 import { PaginatedFilterDataQuery } from "../../models/paginated-filter-data-query";
 import { PeriodoFilterDto } from "../../models/periodo-filter-dto";
 import DivDelete from "../../specific-components/despesa/div-delete";
+import DivDespesaFilterPanel from "../../specific-components/despesa/div-despesa-filter-panel";
 import DivPayment from "../../specific-components/despesa/div-payment";
 import ClonePeriodo from "../../specific-components/periodo/clone-periodo";
 import DivPeriodoSummary from "../../specific-components/periodo/div-periodo-summary";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { despesaCrudSlice } from "../../store/reducers/despesa";
+import { grupoDespesaCrudSlice } from "../../store/reducers/grupo-despesa";
 import { periodoCrudSlice } from "../../store/reducers/periodo";
 import { PageControlTabConfig } from "../../types/page-control-tab-config";
 import { TableItemConfig } from "../../types/table-item-config";
@@ -85,6 +89,8 @@ const ActionDiv = styled.div`
 const FrmDespesa = () => {
     const dispach = useAppDispatch();
     const { data, entity, deleted } = useAppSelector(state => state.periodo)
+    const { data: grupoDados } = useAppSelector(state => state.grupoDespesa)
+    const { data: despesaDados } = useAppSelector(state => state.despesa)
     const [filter, setFilter] = useState<PaginatedFilterDataQuery<PeriodoFilterDto>>({
         filter: {
             contaId: ''
@@ -93,6 +99,14 @@ const FrmDespesa = () => {
         order: 'Ano_desc;Mes_desc',
         page: 1
     })
+    const [despesaFilter, setDespesaFilter] = useState<PaginatedFilterDataQuery<DespesaFilterDto>>({
+        filter: {
+            periodoId: ''
+        },
+        itensPerPage: 1000,
+        order: 'DataCadastro',
+        page: 1
+    });
     const [itemToPay, setItemToPay] = useState<DespesaDto | undefined>();
     const [showPayment, setShowPayment] = useState<boolean>(false);
 
@@ -100,9 +114,18 @@ const FrmDespesa = () => {
     const [showDelete, setShowDelete] = useState<boolean>(false);
 
     const [showClonePeriodo, setShowClonePeriodo] = useState<boolean>(false);
+    const [showFilterPanel, setShowFilterPanel] = useState<boolean>(false);
 
     useEffect(() => {
         dispach(periodoCrudSlice.clearData())
+        dispach(grupoDespesaCrudSlice.getItemsByFilter({
+            itensPerPage: 1000,
+            order: 'Nome',
+            page: 1,
+            filter: {
+                contaId: ''
+            }
+        }))
     }, [])
 
     useEffect(() => {
@@ -157,6 +180,29 @@ const FrmDespesa = () => {
         setShowDelete(true);
 
     }, [itemToDelete])
+
+    useEffect(() => {
+        if (!entity) {
+            return;
+        }
+
+        setDespesaFilter({
+            ...despesaFilter,
+            filter: {
+                ...despesaFilter.filter,
+                periodoId: entity.periodoId
+            }
+        })
+
+    }, [entity])
+
+    useEffect(() => {
+        if (!despesaFilter) {
+            return;
+        }
+
+        dispach(despesaCrudSlice.getItemsByFilter(despesaFilter))
+    }, [despesaFilter])
 
     const tabConf = data?.itens.map(value => (
         {
@@ -278,11 +324,28 @@ const FrmDespesa = () => {
                             disabled={!entity || entity.valor.toFixed(2) === parseFloat('0').toFixed(2)}
                         />
 
+                        <BtnIcon
+                            icon="filter"
+                            caption="Filtrar dados"
+                            size="small"
+                            onClick={() => setShowFilterPanel(!showFilterPanel)}
+                            disabled={!entity}
+                        />
+
                     </DivToolBar>
+                    <DivDespesaFilterPanel
+                        show={showFilterPanel}
+                        grupos={grupoDados && grupoDados.itens ? grupoDados?.itens : []}
+                        filter={despesaFilter.filter}
+                        onFilter={filter => setDespesaFilter({ ...despesaFilter, filter })}
+                    />
+
+
                     <TableContainer>
                         <TableDefault<DespesaDto>
                             tableItemConfigs={configTable}
-                            itens={entity ? entity.despesas : []}
+                            // itens={entity ? entity.despesas : []}
+                            itens={despesaDados ? despesaDados.itens : []}
                             renderActionCell={RenderTableAction}
                         />
                     </TableContainer>
@@ -292,6 +355,7 @@ const FrmDespesa = () => {
 
                 </PageControl>
             </DivPageControl>
+
 
             <ModalPanelDefault
                 show={showPayment}

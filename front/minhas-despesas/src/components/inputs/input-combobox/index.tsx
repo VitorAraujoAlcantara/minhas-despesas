@@ -9,7 +9,7 @@ const DivRoot = styled.div`
 `;
 
 const DivLabel = styled.div`
-    font-size: 1rem;
+    
 `
 
 const Label = styled.label`
@@ -29,7 +29,7 @@ const Select = styled.select`
     background-color: #ffffff00;
     color: ${props => props.theme.palette.primary.contrastText};
     padding: 10px;
-    font-size: 1rem;
+    
 `
 
 const SelectSecondary = styled(Select)`

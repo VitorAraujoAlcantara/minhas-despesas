@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Box from "../../../components/box";
 import BtnIcon from "../../../components/buttons/btn-icon";
 import FormHeader from "../../../components/forms/form-header";
+import { GroupBox } from "../../../components/group-box";
 import LabelBold from "../../../components/labels/label-bold";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { setTheme, setThemeToLocalStorage } from "../../../store/reducers/app";
@@ -29,14 +30,6 @@ const DivRow = styled.div`
     gap: 10px;
     margin: 2.5px 0px;
 `
-
-const FieldSet = styled.fieldset`
-    border: 1px solid ${props => props.theme.palette.secondary.main};
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-`
-
 interface DivContaDetailProps {
 
 }
@@ -78,7 +71,7 @@ const DivContaDetail = (props: DivContaDetailProps) => {
                 Aparência
             </FormHeader>
             <DivBody>
-                <FieldSet>
+                <GroupBox>
                     <legend>Tema</legend>
                     <label>
                         Padrão
@@ -116,7 +109,7 @@ const DivContaDetail = (props: DivContaDetailProps) => {
                         Neon
                         <input type='radio' checked={theme === 'neon'} onClick={e => changeAppTheme('neon')} />
                     </label>
-                </FieldSet>
+                </GroupBox>
             </DivBody>
 
             <FormHeader>
