@@ -172,7 +172,7 @@ const DivDespesaFilterPanel = (props: DivDespesaFilterPanelProps) => {
                                         })
                                     }
                                 }}
-                            checked={despesaFilter.apenasPagos} />
+                            checked={despesaFilter.apenasPagos === true} />
                     </LabelBold>
 
                     <LabelBold>
@@ -188,7 +188,7 @@ const DivDespesaFilterPanel = (props: DivDespesaFilterPanelProps) => {
                                         })
                                     }
                                 }}
-                            checked={despesaFilter.apenasPendentes} />
+                            checked={despesaFilter.apenasPendentes === true} />
                     </LabelBold>
                 </DivGroupBox>
             </DivRow>

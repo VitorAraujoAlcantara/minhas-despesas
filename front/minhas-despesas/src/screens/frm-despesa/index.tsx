@@ -307,7 +307,6 @@ const FrmDespesa = () => {
                             disabled={!entity || entity.valor.toFixed(2) !== parseFloat('0').toFixed(2)}
                         />
 
-
                         <BtnIcon
                             icon="moneyCheckDollar"
                             caption="Novo lançamento"
@@ -326,7 +325,7 @@ const FrmDespesa = () => {
 
                         <BtnIcon
                             icon="filter"
-                            caption="Filtrar dados"
+                            caption={showFilterPanel ? "Esconder filtros" : "Exibir filtros"}
                             size="small"
                             onClick={() => setShowFilterPanel(!showFilterPanel)}
                             disabled={!entity}
